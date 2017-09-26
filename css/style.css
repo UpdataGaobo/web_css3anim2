@@ -1,0 +1,167 @@
+/**
+* 功能：攀爬金子塔样式设置 
+*
+**/
+@charset "utf-8";
+body {
+    overflow: hidden;
+    background: rgb(0, 0, 0);
+}
+.stage {
+    position: relative;
+    top: 500px;
+    width: 150px;
+    height: 320px;
+    margin: 0 auto;
+
+/*    perspective: 1200px;*/
+    perspective-origin: 50% 50%;
+}
+.pyamin3d {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+
+    transition: transform 1s ease-out;
+    transform-style: preserve-3d;
+    animation: fall 3s linear infinite;
+    transform: rotateY(30deg);
+}
+.tagle {
+    transform-style: preserve-3d;
+    transform-origin: left top;
+
+    width: 0;
+    height: 0;
+    background: none;
+}
+.tagle:before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-width: 176px 75px 0 75px;
+
+    transform-origin: bottom center;
+}
+
+.side1 {
+    transform: translatex(0) rotatey(115.2deg) rotatez(90deg);
+}
+.side2 {
+    transform: translatex(150px) rotatez(90deg) rotatex(64.8deg);
+}
+.side3 {
+    transform: translatez(0) rotatex(64.8deg);
+}
+.side4 {
+    transform: translatey(150px) rotatex(115.2deg);
+}
+
+.side1:before {
+    border-color: rgba(168, 24, 24, 0.3) transparent transparent transparent;
+    animation: flipFirst 3s infinite;
+}
+.side2:before {
+    border-color: rgba(20, 90, 225, 0.3) transparent transparent transparent;
+    animation: flipSecond 3s infinite;
+}
+.side3:before {
+    border-color: rgba(30, 208, 71, 0.28) transparent transparent transparent;
+    animation: flipThird 3s infinite;
+}
+.side4:before {
+    border-color: rgba(170, 26, 98, 0.3) transparent transparent transparent;
+    animation: flipFourth 3s infinite;
+}
+
+
+@keyframes fall {
+    0% {
+        transform: rotateX(75deg) rotateZ(65deg) translateZ( 176px);
+    }
+    100% {
+        transform: rotateX(75deg) rotateZ(65deg) translateZ(-140px);
+    }
+}
+
+@keyframes flipFirst {
+    12.5%,
+    50% {
+        transform-origin: bottom center;
+        transform: rotatex(130deg);
+    }
+    50.0001%,
+    87.5% {
+        transform-origin: top center;
+        transform: translateX(0px) translateY(286px) translateZ(-134px) rotatex(130deg);
+    }
+    100% {
+        transform-origin: top center;
+        transform: translateX(0px) translateY(286px) translateZ(-135px) rotatex(360deg);
+    }
+}
+
+
+@keyframes flipSecond {
+    25% {
+        transform: rotatex(0deg);
+    }
+    37.5%,
+    50% {
+        transform-origin: bottom center;
+        transform: rotatex(-130deg);
+    }
+    50.0001%,
+    62.5% {
+        transform-origin: top center;
+        transform: translateX(0px) translateY(286px) translateZ(134px) rotatex(-130deg);
+    }
+    75%,
+    100% {
+        transform-origin: top center;
+        transform: translateX(0px) translateY(286px) translateZ(134px) rotatex(-360deg);
+    }
+}
+
+@keyframes flipThird {
+    12.5% {
+        transform: rotatex(0deg);
+    }
+    25%,
+    50% {
+        transform-origin: bottom center;
+        transform: rotatex(-130deg);
+    }
+    50.0001%,
+    75% {
+        transform-origin: top center;
+        transform: translateX(0px) translateY(286px) translateZ(134px) rotatex(-130deg);
+    }
+    87.5%,
+    100% {
+        transform-origin: top center;
+        transform: translateX(0px) translateY(286px) translateZ(134px) rotatex(-360deg);
+    }
+}
+
+@keyframes flipFourth {
+    37.5% {
+        transform: rotatex(0deg);
+    }
+    50% {
+        transform-origin: bottom center;
+        transform: rotatex(130deg);
+    }
+    50.0001% {
+        transform-origin: top center;
+        transform: translateX(0px) translateY(286px) translateZ(-134px) rotatex(130deg);
+    }
+    62.5%,
+    100% {
+        transform-origin: top center;
+        transform: translateX(0px) translateY(286px) translateZ(-134px) rotatex(360deg);
+    }
+}
